@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>layui table tr index获取</title>
+    <url>/2020/09/11/LayuiTableTrIndex/</url>
+    <content><![CDATA[<h2 id="Layui获取当前编辑单元格的行位置"><a href="#Layui获取当前编辑单元格的行位置" class="headerlink" title="Layui获取当前编辑单元格的行位置"></a>Layui获取当前编辑单元格的行位置</h2><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>  使用了edit:’text’，且使用数据为静态数组对象;如：arr{}，需求：改变其中某个参数值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">table.on(‘edit(text)’,<span class="keyword">function</span>(obj)&#123;</span><br><span class="line">  //写上</span><br><span class="line">  console.log($(this).parents(‘tr’).data(‘index’));</span><br><span class="line"></span><br><span class="line">&#125;) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2>]]></content>
+      <categories>
+        <category>-Layui -HTML -前端 -JS&amp;JQ&amp;ES6 -技术</category>
+      </categories>
+      <tags>
+        <tag>实用 集合相关操作 表格</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初学检索——Lucene</title>
     <url>/2020/09/11/Lucene1/</url>
     <content><![CDATA[<h2 id="Lucene的简单增删改查"><a href="#Lucene的简单增删改查" class="headerlink" title="Lucene的简单增删改查"></a>Lucene的简单增删改查</h2><h3 id="pom-xml配置"><a href="#pom-xml配置" class="headerlink" title="pom.xml配置"></a>pom.xml配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">&lt;!-- lucene核心库 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-core&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.10.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- Lucene的查询解析器 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-queryparser&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.10.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- lucene的默认分词器库 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-analyzers-common&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.10.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- lucene的高亮显示 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-highlighter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.10.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.janeluo&lt;/groupId&gt;</span><br><span class="line"></span><br><span class="line">    &lt;artifactId&gt;ikanalyzer&lt;/artifactId&gt;</span><br><span class="line"></span><br><span class="line">    &lt;version&gt;2012_u6&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -11,6 +25,7 @@
 <h3 id="Search-方法"><a href="#Search-方法" class="headerlink" title="Search()方法"></a>Search()方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">    public static void search() throws ParseException, IOException &#123;</span><br><span class="line">      // 索引目录对象</span><br><span class="line">      Directory directory = FSDirectory.open(new File(<span class="string">&quot;d:\\indexDir&quot;</span>));</span><br><span class="line">      // 索引读取工具</span><br><span class="line">      IndexReader reader = DirectoryReader.open(directory);</span><br><span class="line">      // 索引搜索工具</span><br><span class="line">      IndexSearcher searcher = new IndexSearcher(reader);</span><br><span class="line"></span><br><span class="line">      // 创建查询解析器,两个参数：默认要查询的字段的名称，分词器</span><br><span class="line">      QueryParser parser = new QueryParser(<span class="string">&quot;title&quot;</span>, new IKAnalyzer());</span><br><span class="line">      // 创建查询对象</span><br><span class="line">      Query query = parser.parse(<span class="string">&quot;哈&quot;</span>);</span><br><span class="line"></span><br><span class="line">      // 搜索数据,两个参数：查询条件对象要查询的最大结果条数</span><br><span class="line">      // 返回的结果是 按照匹配度排名得分前N名的文档信息（包含查询到的总条数信息、所有符合条件的文档的编号信息）。</span><br><span class="line">      long begin=System.currentTimeMillis();</span><br><span class="line">      TopDocs topDocs = searcher.search(query, 10);</span><br><span class="line">      // 获取总条数</span><br><span class="line">      System.out.println(<span class="string">&quot;本次搜索共找到&quot;</span> + topDocs.totalHits + <span class="string">&quot;条数据&quot;</span>);</span><br><span class="line">      // 获取得分文档对象（ScoreDoc）数组.SocreDoc中包含：文档的编号、文档的得分</span><br><span class="line">      ScoreDoc[] scoreDocs = topDocs.scoreDocs;</span><br><span class="line">      Float f=0.0f;</span><br><span class="line">      <span class="keyword">for</span> (ScoreDoc scoreDoc : scoreDocs) &#123;</span><br><span class="line">          // 取出文档编号</span><br><span class="line">          int docID = scoreDoc.doc;</span><br><span class="line">          // 根据编号去找文档</span><br><span class="line">          Document doc = reader.document(docID);</span><br><span class="line">          System.out.println(<span class="string">&quot;id: &quot;</span> + doc.get(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">          System.out.println(<span class="string">&quot;title: &quot;</span> + doc.get(<span class="string">&quot;title&quot;</span>));</span><br><span class="line">          // 取出文档得分</span><br><span class="line">          System.out.println(<span class="string">&quot;得分： &quot;</span> + scoreDoc.score);</span><br><span class="line">          f=f+scoreDoc.score;</span><br><span class="line">      &#125;</span><br><span class="line">//查询时间</span><br><span class="line">      System.out.println(System.currentTimeMillis()-begin);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="预览效果"><a href="#预览效果" class="headerlink" title="预览效果"></a>预览效果</h3>
+
 <h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
       <categories>
         <category>-搜索引擎 -入门 -Lucene</category>
@@ -23,6 +38,47 @@
     <title>Mine</title>
     <url>/2020/09/10/Mine/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>algorithm</title>
+    <url>/2020/09/11/algorithm/</url>
+    <content><![CDATA[<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。<br>来源：[力扣（LeetCode）] (<a href="https://leetcode-cn.com/problems/two-sum">https://leetcode-cn.com/problems/two-sum</a>)</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<h5 id="我的代码-–JAVA"><a href="#我的代码-–JAVA" class="headerlink" title="我的代码 –JAVA"></a>我的代码 –JAVA</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();</span><br><span class="line">        int[] ans=new int[2];</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(nums[i]))&#123;</span><br><span class="line">                ans[0]=map.get(nums[i]);</span><br><span class="line">                ans[1]=i;</span><br><span class="line">                <span class="built_in">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(target-nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>耗时 2ms 内存消耗 39.9MB</p>
+<h5 id="我的代码-–C"><a href="#我的代码-–C" class="headerlink" title="我的代码 –C++"></a>我的代码 –C++</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">  public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; newNums;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0;i &lt; nums.size();i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int j = i + 1;j &lt; nums.size();j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                newNums.push_back(i);</span><br><span class="line">                newNums.push_back(j);</span><br><span class="line">                <span class="built_in">return</span> newNums;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> newNums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 904ms 内存消耗 9.1MB</p>
+<h5 id="最佳解决方案"><a href="#最佳解决方案" class="headerlink" title="最佳解决方案"></a>最佳解决方案</h5><pre><code class="bash">  JAVA 段</code></pre>
+<h2 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h2>]]></content>
+      <categories>
+        <category>-Array -两数之和 -JAVA -Map -C++</category>
+      </categories>
+      <tags>
+        <tag>-算法 -简单 -leetcode -入门</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>combine-two-tables</title>
+    <url>/2020/09/11/combine-two-tables/</url>
+    <content><![CDATA[<h2 id="组合两个表"><a href="#组合两个表" class="headerlink" title="组合两个表"></a>组合两个表</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h5 id="表1-Person"><a href="#表1-Person" class="headerlink" title="表1: Person"></a>表1: Person</h5><p>+————-+———+<br>| 列名         | 类型     |<br>+————-+———+<br>| PersonId    | int     |<br>| FirstName   | varchar |<br>| LastName    | varchar |<br>+————-+———+<br>PersonId 是上表主键</p>
+<h5 id="表2-Address"><a href="#表2-Address" class="headerlink" title="表2: Address"></a>表2: Address</h5><p>+————-+———+<br>| 列名         | 类型    |<br>+————-+———+<br>| AddressId   | int     |<br>| PersonId    | int     |<br>| City        | varchar |<br>| State       | varchar |<br>+————-+———+<br>AddressId 是上表主键
+ </p>
+<h5 id="编写一个-SQL-查询，满足条件：无论-person-是否有地址信息，都需要基于上述两表提供-person-的以下信息："><a href="#编写一个-SQL-查询，满足条件：无论-person-是否有地址信息，都需要基于上述两表提供-person-的以下信息：" class="headerlink" title="编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息："></a>编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：</h5><p> </p>
+<p>FirstName, LastName, City, State</p>
+<h3 id="我的代码–MySQL"><a href="#我的代码–MySQL" class="headerlink" title="我的代码–MySQL"></a>我的代码–MySQL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write your MySQL query statement below</span></span><br><span class="line">select Firstname,LastName,City,State from Person a left join Address b on a.PersonId=b.PersonId <span class="built_in">where</span> 1=1 order by a.PersonId</span><br></pre></td></tr></table></figure>
+
+<p>耗时 277ms 内存消耗0B</p>
+<h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
+      <categories>
+        <category>-算法 -简单 -Join -SQL -查询</category>
+      </categories>
+      <tags>
+        <tag>-入门级算法 -入门级SQL -SELECT</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -41,5 +97,126 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>longest-common-prefix</title>
+    <url>/2020/09/11/longest-common-prefix/</url>
+    <content><![CDATA[<h2 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 “”。</p>
+<p>示例 1:</p>
+<p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p>
+<h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>所有输入只包含小写字母 a-z 。</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">        StringBuffer sb=new StringBuffer();</span><br><span class="line">        int maxLength=0;</span><br><span class="line">        int t=0;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;strs.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(maxLength&lt;strs[i].length())&#123;</span><br><span class="line">                maxLength=strs[i].length();</span><br><span class="line">                t=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;maxLength;i++)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                sb.append(strs[t].charAt(i));</span><br><span class="line">            &#125;catch (Exception e)&#123;</span><br><span class="line">                <span class="keyword">if</span>(sb.toString().length()==0)&#123;</span><br><span class="line">                    <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span> sb.toString();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(int j=0;j&lt; strs.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(strs[j].matches(sb.toString()+<span class="string">&quot;.*&quot;</span>))&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sb.deleteCharAt(sb.length()-1);</span><br><span class="line">                    <span class="built_in">return</span> sb.toString();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sb.toString().length()==0)&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 238ms 内存消耗 40.2MB</p>
+<h3 id="优化代码（搬运评论）-JAVA"><a href="#优化代码（搬运评论）-JAVA" class="headerlink" title="优化代码（搬运评论）-JAVA"></a>优化代码（搬运评论）-JAVA</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">        <span class="keyword">if</span>(strs.length == 0)&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String str = strs[0];</span><br><span class="line">        <span class="keyword">for</span>(int i = 1; i &lt; strs.length; i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(strs[i].indexOf(str) != 0)&#123;</span><br><span class="line">                str=str.substring(0, str.length() - 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反正很快<del>~</del></p>
+<h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
+      <categories>
+        <category>-JAVA -leetcode -简单 -算法 -字符串</category>
+      </categories>
+      <tags>
+        <tag>-入门级算法 -字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>palindrome-number</title>
+    <url>/2020/09/11/palindrome-number/</url>
+    <content><![CDATA[<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p>输入: 121<br>输出: true</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p>输入: -121<br>输出: false<br>解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h5><p>输入: 10<br>输出: false<br>解释: 从右向左读, 为 01 。因此它不是一个回文数。</p>
+<h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶:"></a>进阶:</h5><p>你能不将整数转为字符串来解决这个问题吗？</p>
+<h4 id="我的代码–JAVA"><a href="#我的代码–JAVA" class="headerlink" title="我的代码–JAVA"></a>我的代码–JAVA</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPalindrome(int x) &#123;</span><br><span class="line">        int n=0;</span><br><span class="line">        int t=x;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;0)  <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(x!=0)&#123;</span><br><span class="line">            n=n*10+x%10;</span><br><span class="line">            x/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> n==t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 10ms 内存消耗 39MB</p>
+<h5 id="PS-与整数反转类似，但无需判断Integer溢出"><a href="#PS-与整数反转类似，但无需判断Integer溢出" class="headerlink" title="PS:与整数反转类似，但无需判断Integer溢出"></a>PS:与整数反转类似，但无需判断Integer溢出</h5><h3 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h3>]]></content>
+      <categories>
+        <category>-回文数 -leetcode -JAVA -算法 -简单</category>
+      </categories>
+      <tags>
+        <tag>-回文数 -入门级算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>reverse-integer</title>
+    <url>/2020/09/11/reverse-integer/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
+<h5 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h5><p>输入: 123<br>输出: 321</p>
+<h5 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h5><p>输入: -123<br>输出: -321</p>
+<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><p>输入: 120<br>输出: 21</p>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。</p>
+<h5 id="我的代码–JAVA"><a href="#我的代码–JAVA" class="headerlink" title="我的代码–JAVA"></a>我的代码–JAVA</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int reverse(int x) &#123;</span><br><span class="line">   Long n=0L;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(x!=0)&#123;</span><br><span class="line">            n=n*10+x%10;</span><br><span class="line">            x=x/10;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; Integer.MIN_VALUE || n&gt;Integer.MAX_VALUE)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(n);</span><br><span class="line">        <span class="built_in">return</span> n.intValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 7ms 内存消耗 37.3MB</p>
+<h2 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h2>]]></content>
+      <categories>
+        <category>-JAVA -算法 -简单 -Integer</category>
+      </categories>
+      <tags>
+        <tag>-integer -算法 -简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>roman-to-integer</title>
+    <url>/2020/09/11/roman-to-integer/</url>
+    <content><![CDATA[<h2 id="罗马数字转整数"><a href="#罗马数字转整数" class="headerlink" title="罗马数字转整数"></a>罗马数字转整数</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
+<p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p>
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+<p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 <br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。<br>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p>输入: “III”<br>输出: 3</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p>输入: “IV”<br>输出: 4</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h5><p>输入: “IX”<br>输出: 9</p>
+<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h5><p>输入: “LVIII”<br>输出: 58<br>解释: L = 50, V= 5, III = 3.</p>
+<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h5><p>输入: “MCMXCIV”<br>输出: 1994<br>解释: M = 1000, CM = 900, XC = 90, IV = 4.</p>
+<h3 id="我的代码–JAVA"><a href="#我的代码–JAVA" class="headerlink" title="我的代码–JAVA"></a>我的代码–JAVA</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int romanToInt(String s) &#123;</span><br><span class="line">        Map&lt;String,Integer&gt; map=new HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;I&quot;</span>,1);</span><br><span class="line">        map.put(<span class="string">&quot;V&quot;</span>,5);</span><br><span class="line">        map.put(<span class="string">&quot;X&quot;</span>,10);</span><br><span class="line">        map.put(<span class="string">&quot;L&quot;</span>,50);</span><br><span class="line">        map.put(<span class="string">&quot;C&quot;</span>,100);</span><br><span class="line">        map.put(<span class="string">&quot;D&quot;</span>,500);</span><br><span class="line">        map.put(<span class="string">&quot;M&quot;</span>,1000);</span><br><span class="line">        int sum=0;</span><br><span class="line">        <span class="keyword">for</span>(int i=s.length()-1;i&gt;-1;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==0)&#123;</span><br><span class="line">                sum=sum+map.get(s.charAt(i)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">               int m= map.get(s.charAt(i)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">               int n=map.get(s.charAt(i-1)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">               <span class="keyword">if</span>(m&gt;n)&#123;</span><br><span class="line">                   i--;</span><br><span class="line">                   sum=sum+m-n;</span><br><span class="line">               &#125;<span class="keyword">else</span>  &#123;</span><br><span class="line"></span><br><span class="line">                   sum=sum+m;</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span>  sum;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 14ms 内存消耗 40.4MB</p>
+<h2 id="完-没看见精简高效的，虽然我这也不高效"><a href="#完-没看见精简高效的，虽然我这也不高效" class="headerlink" title="完! 没看见精简高效的，虽然我这也不高效. - -!"></a>完! 没看见精简高效的，虽然我这也不高效. - -!</h2>]]></content>
+      <categories>
+        <category>-罗马数字转整数 -JAVA -leetcode -简单</category>
+      </categories>
+      <tags>
+        <tag>-integer -leetcode -入门级算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>second-highest-salary</title>
+    <url>/2020/09/11/second-highest-salary/</url>
+    <content><![CDATA[<h2 id="第二高的薪水"><a href="#第二高的薪水" class="headerlink" title="第二高的薪水"></a>第二高的薪水</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><h5 id="编写一个-SQL-查询，获取-Employee-表中第二高的薪水（Salary）-。"><a href="#编写一个-SQL-查询，获取-Employee-表中第二高的薪水（Salary）-。" class="headerlink" title="编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。"></a>编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。</h5><p>+—-+——–+<br>| Id | Salary |<br>+—-+——–+<br>| 1  | 100    |<br>| 2  | 200    |<br>| 3  | 300    |<br>+—-+——–+</p>
+<h5 id="例如上述-Employee-表，SQL查询应该返回-200-作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回-null。"><a href="#例如上述-Employee-表，SQL查询应该返回-200-作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回-null。" class="headerlink" title="例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。"></a>例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。</h5><p>+———————+<br>| SecondHighestSalary |<br>+———————+<br>| 200                 |<br>+———————+</p>
+<h3 id="我的代码–MySQL"><a href="#我的代码–MySQL" class="headerlink" title="我的代码–MySQL"></a>我的代码–MySQL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Write your MySQL query statement below</span></span><br><span class="line"></span><br><span class="line">select (select DISTINCT Salary from Employee  order by Salary desc  <span class="built_in">limit</span> 1,1)as SecondHighestSalary</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="说明：内部select查询所有记录，DISTINCT-去掉重复记录，降序排序后，通过limit-1-1-从第二条记录开始，取一条出来。外部select-则是用来根据题目要返回null-查询为-null-时-就是null，不加就没有。"><a href="#说明：内部select查询所有记录，DISTINCT-去掉重复记录，降序排序后，通过limit-1-1-从第二条记录开始，取一条出来。外部select-则是用来根据题目要返回null-查询为-null-时-就是null，不加就没有。" class="headerlink" title="说明：内部select查询所有记录，DISTINCT 去掉重复记录，降序排序后，通过limit 1,1 从第二条记录开始，取一条出来。外部select 则是用来根据题目要返回null 查询为(null)时 就是null，不加就没有。"></a>说明：内部select查询所有记录，DISTINCT 去掉重复记录，降序排序后，通过limit 1,1 从第二条记录开始，取一条出来。外部select 则是用来根据题目要返回null 查询为(null)时 就是null，不加就没有。</h4><h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
+      <categories>
+        <category>-SQL -算法 -简单 -查询</category>
+      </categories>
+      <tags>
+        <tag>-SQL -入门级算法 -入门级SQL -SELECT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>valid-parentheses</title>
+    <url>/2020/09/11/valid-parentheses/</url>
+    <content><![CDATA[<h2 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a>有效的括号</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p>输入: “()”<br>输出: true</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p>输入: “()[]{}”<br>输出: true</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h5><p>输入: “(]”<br>输出: false</p>
+<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h5><p>输入: “([)]”<br>输出: false</p>
+<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h5><p>输入: “{[]}”<br>输出: true</p>
+<h3 id="我的代码–JAVA"><a href="#我的代码–JAVA" class="headerlink" title="我的代码–JAVA"></a>我的代码–JAVA</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isValid(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()&gt;0)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.length() % 2 ==1)&#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Stack&lt;Character&gt; stack=new Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                stack.push(s.charAt(i));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;)&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size()&gt;0 &amp;&amp; stack.pop()==<span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">                stack.push(s.charAt(i));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;&#125;&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size()&gt;0 &amp;&amp; stack.pop()==<span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                stack.push(s.charAt(i));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i)==<span class="string">&#x27;]&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(stack.size()&gt;0 &amp;&amp; stack.pop()==<span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.size()&gt;0)&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>耗时 2ms 内存消耗 37.9MB</p>
+<h3 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h3>]]></content>
+      <categories>
+        <category>-JAVA -leetcode -算法 -简单 -栈</category>
+      </categories>
+      <tags>
+        <tag>-栈 -java -入门级算法</tag>
+      </tags>
   </entry>
 </search>
