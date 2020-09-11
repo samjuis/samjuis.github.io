@@ -8,7 +8,13 @@
 
 <h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2>]]></content>
       <categories>
-        <category>-Layui -HTML -前端 -JS&amp;JQ&amp;ES6 -技术</category>
+        <category>Layui</category>
+        <category>HTML</category>
+        <category>前端</category>
+        <category>JS</category>
+        <category>JQ</category>
+        <category>ES6</category>
+        <category>技术</category>
       </categories>
       <tags>
         <tag>实用 集合相关操作 表格</tag>
@@ -28,10 +34,15 @@
 
 <h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
       <categories>
-        <category>-搜索引擎 -入门 -Lucene</category>
+        <category>搜索引擎</category>
+        <category>入门</category>
+        <category>Lucene</category>
       </categories>
       <tags>
-        <tag>-入门 -简单 -SQL -JAVA</tag>
+        <tag>入门</tag>
+        <tag>简单</tag>
+        <tag>SQL</tag>
+        <tag>JAVA</tag>
       </tags>
   </entry>
   <entry>
@@ -55,10 +66,17 @@
 <h5 id="最佳解决方案"><a href="#最佳解决方案" class="headerlink" title="最佳解决方案"></a>最佳解决方案</h5><pre><code class="bash">  JAVA 段</code></pre>
 <h2 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h2>]]></content>
       <categories>
-        <category>-Array -两数之和 -JAVA -Map -C++</category>
+        <category>Array</category>
+        <category>两数之和</category>
+        <category>JAVA</category>
+        <category>Map</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>-算法 -简单 -leetcode -入门</tag>
+        <tag>入门</tag>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -74,10 +92,16 @@
 <p>耗时 277ms 内存消耗0B</p>
 <h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
       <categories>
-        <category>-算法 -简单 -Join -SQL -查询</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>Join</category>
+        <category>SQL</category>
+        <category>查询</category>
       </categories>
       <tags>
-        <tag>-入门级算法 -入门级SQL -SELECT</tag>
+        <tag>入门级算法</tag>
+        <tag>入门级SQL</tag>
+        <tag>SELECT</tag>
       </tags>
   </entry>
   <entry>
@@ -114,10 +138,15 @@
 <p>反正很快<del>~</del></p>
 <h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
       <categories>
-        <category>-JAVA -leetcode -简单 -算法 -字符串</category>
+        <category>JAVA</category>
+        <category>leetcode</category>
+        <category>简单</category>
+        <category>算法</category>
+        <category>字符串</category>
       </categories>
       <tags>
-        <tag>-入门级算法 -字符串</tag>
+        <tag>入门级算法</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -133,10 +162,15 @@
 <p>耗时 10ms 内存消耗 39MB</p>
 <h5 id="PS-与整数反转类似，但无需判断Integer溢出"><a href="#PS-与整数反转类似，但无需判断Integer溢出" class="headerlink" title="PS:与整数反转类似，但无需判断Integer溢出"></a>PS:与整数反转类似，但无需判断Integer溢出</h5><h3 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h3>]]></content>
       <categories>
-        <category>-回文数 -leetcode -JAVA -算法 -简单</category>
+        <category>回文数</category>
+        <category>leetcode</category>
+        <category>JAVA</category>
+        <category>算法</category>
+        <category>简单</category>
       </categories>
       <tags>
-        <tag>-回文数 -入门级算法</tag>
+        <tag>入门级算法</tag>
+        <tag>回文数</tag>
       </tags>
   </entry>
   <entry>
@@ -152,10 +186,15 @@
 <p>耗时 7ms 内存消耗 37.3MB</p>
 <h2 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h2>]]></content>
       <categories>
-        <category>-JAVA -算法 -简单 -Integer</category>
+        <category>JAVA</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>Integer</category>
       </categories>
       <tags>
-        <tag>-integer -算法 -简单</tag>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>integer</tag>
       </tags>
   </entry>
   <entry>
@@ -176,10 +215,15 @@
 <p>耗时 14ms 内存消耗 40.4MB</p>
 <h2 id="完-没看见精简高效的，虽然我这也不高效"><a href="#完-没看见精简高效的，虽然我这也不高效" class="headerlink" title="完! 没看见精简高效的，虽然我这也不高效. - -!"></a>完! 没看见精简高效的，虽然我这也不高效. - -!</h2>]]></content>
       <categories>
-        <category>-罗马数字转整数 -JAVA -leetcode -简单</category>
+        <category>罗马数字转整数</category>
+        <category>JAVA</category>
+        <category>leetcode</category>
+        <category>简单</category>
       </categories>
       <tags>
-        <tag>-integer -leetcode -入门级算法</tag>
+        <tag>leetcode</tag>
+        <tag>入门级算法</tag>
+        <tag>integer</tag>
       </tags>
   </entry>
   <entry>
@@ -191,10 +235,16 @@
 
 <h4 id="说明：内部select查询所有记录，DISTINCT-去掉重复记录，降序排序后，通过limit-1-1-从第二条记录开始，取一条出来。外部select-则是用来根据题目要返回null-查询为-null-时-就是null，不加就没有。"><a href="#说明：内部select查询所有记录，DISTINCT-去掉重复记录，降序排序后，通过limit-1-1-从第二条记录开始，取一条出来。外部select-则是用来根据题目要返回null-查询为-null-时-就是null，不加就没有。" class="headerlink" title="说明：内部select查询所有记录，DISTINCT 去掉重复记录，降序排序后，通过limit 1,1 从第二条记录开始，取一条出来。外部select 则是用来根据题目要返回null 查询为(null)时 就是null，不加就没有。"></a>说明：内部select查询所有记录，DISTINCT 去掉重复记录，降序排序后，通过limit 1,1 从第二条记录开始，取一条出来。外部select 则是用来根据题目要返回null 查询为(null)时 就是null，不加就没有。</h4><h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
       <categories>
-        <category>-SQL -算法 -简单 -查询</category>
+        <category>SQL</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>查询</category>
       </categories>
       <tags>
-        <tag>-SQL -入门级算法 -入门级SQL -SELECT</tag>
+        <tag>SQL</tag>
+        <tag>入门级算法</tag>
+        <tag>入门级SQL</tag>
+        <tag>SELECT</tag>
       </tags>
   </entry>
   <entry>
@@ -213,10 +263,16 @@
 <p>耗时 2ms 内存消耗 37.9MB</p>
 <h3 id="完"><a href="#完" class="headerlink" title="完!"></a>完!</h3>]]></content>
       <categories>
-        <category>-JAVA -leetcode -算法 -简单 -栈</category>
+        <category>JAVA</category>
+        <category>leetcode</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>栈</category>
       </categories>
       <tags>
-        <tag>-栈 -java -入门级算法</tag>
+        <tag>入门级算法</tag>
+        <tag>栈</tag>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
