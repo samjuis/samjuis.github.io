@@ -105,6 +105,47 @@
       </tags>
   </entry>
   <entry>
+    <title>count-and-say</title>
+    <url>/2020/09/17/count-and-say/</url>
+    <content><![CDATA[<h2 id="外观数列"><a href="#外观数列" class="headerlink" title="外观数列"></a>外观数列</h2><p>给定一个正整数 n（1 ≤ n ≤ 30），输出外观数列的第 n 项。</p>
+<p>注意：整数序列中的每一项将表示为一个字符串。</p>
+<p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。前五项如下：</p>
+<ol>
+<li>1</li>
+<li>11</li>
+<li>21</li>
+<li>1211</li>
+<li>111221</li>
+</ol>
+<p>第一项是数字 1</p>
+<p>描述前一项，这个数是 1 即 “一个 1 ”，记作 11</p>
+<p>描述前一项，这个数是 11 即 “两个 1 ” ，记作 21</p>
+<p>描述前一项，这个数是 21 即 “一个 2 一个 1 ” ，记作 1211</p>
+<p>描述前一项，这个数是 1211 即 “一个 1 一个 2 两个 1 ” ，记作 111221</p>
+<p> </p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p>输入: 1<br>输出: “1”<br>解释：这是一个基本样例。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><p>输入: 4<br>输出: “1211”<br>解释：当 n = 3 时，序列是 “21”，其中我们有 “2” 和 “1” 两组，”2” 可以读作 “12”，也就是出现频次 = 1 而 值 = 2；类似 “1” 可以读作 “11”。所以答案是 “12” 和 “11” 组合在一起，也就是 “1211”。</p>
+<h5 id="我的代码-java"><a href="#我的代码-java" class="headerlink" title="我的代码-java"></a>我的代码-java</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> import java.lang.annotation.Target;</span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Sam</span><br><span class="line"> * @date 2020/9/9 10:39</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        System.out.println(countAndSay(10));</span><br><span class="line">    &#125;</span><br><span class="line">    public static String countAndSay(int n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;1 || n&gt;30)&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb=new StringBuilder();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(n==1)&#123;</span><br><span class="line">            <span class="built_in">return</span> sb.append(1).toString();</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(1);</span><br><span class="line">        <span class="built_in">return</span> callBack(sb,2,n);</span><br><span class="line">    &#125;</span><br><span class="line">    public static String callBack(StringBuilder sb,int m,int n)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(m&gt;n)&#123;</span><br><span class="line">            <span class="built_in">return</span> sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int count=0; //重复出现-计数</span><br><span class="line">        int i=0;//指针</span><br><span class="line">        int k=Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>);//当前数</span><br><span class="line">        int t=k;// 变更前数值</span><br><span class="line">            StringBuilder sb1=new StringBuilder();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;sb.length())&#123;</span><br><span class="line">                t=k;</span><br><span class="line">                <span class="keyword">if</span>(Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>)==k)&#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span>(count!=0) &#123;</span><br><span class="line">                        sb1.append(count);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb1.append(1);</span><br><span class="line">                    &#125;</span><br><span class="line">                    sb1.append(k);</span><br><span class="line">                    k++;</span><br><span class="line">                    count=0;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(k&gt;Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>))&#123;</span><br><span class="line">                    k=Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(k&lt;Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>))&#123;</span><br><span class="line">                    k=Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(Integer.parseInt(sb.toString().charAt(i)+<span class="string">&quot;&quot;</span>)==t)&#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count==0)&#123;</span><br><span class="line">                sb1.append(1);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb1.append(count);</span><br><span class="line">            &#125;</span><br><span class="line">            sb1.append(k);</span><br><span class="line">        <span class="built_in">return</span> callBack(sb1,m+1,n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="耗时-32ms-空间占用-39-3MB"><a href="#耗时-32ms-空间占用-39-3MB" class="headerlink" title="耗时 32ms 空间占用 39.3MB"></a>耗时 32ms 空间占用 39.3MB</h5><h5 id="优化后-java"><a href="#优化后-java" class="headerlink" title="优化后-java"></a>优化后-java</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String countAndSay(int n) &#123;</span><br><span class="line">        // 递归终止条件</span><br><span class="line">        <span class="keyword">if</span> (n == 1) &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuffer res = new StringBuffer();</span><br><span class="line">        // 拿到上一层的字符串</span><br><span class="line">        String str = countAndSay(n - 1);</span><br><span class="line">        int length = str.length();</span><br><span class="line">        // 开始指针为0</span><br><span class="line">        int start = 0;</span><br><span class="line">        // 注意这从起始条件要和下面长度统一</span><br><span class="line">        <span class="keyword">for</span> (int i = 1; i &lt; length + 1; i++) &#123;</span><br><span class="line">            // 字符串最后一位直接拼接</span><br><span class="line">            <span class="keyword">if</span> (i == length) &#123;</span><br><span class="line">                res.append(i - start).append(str.charAt(start));</span><br><span class="line">            // 直到start位的字符串和i位的字符串不同，拼接并更新start位</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str.charAt(i) != str.charAt(start) ) &#123;</span><br><span class="line">                res.append(i - start).append(str.charAt(start));</span><br><span class="line">                start = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="说明，没看懂，有空再研究。这是简单分类里的奇葩吐了-耗时半天做出来"><a href="#说明，没看懂，有空再研究。这是简单分类里的奇葩吐了-耗时半天做出来" class="headerlink" title="说明，没看懂，有空再研究。这是简单分类里的奇葩吐了 耗时半天做出来"></a>说明，没看懂，有空再研究。这是简单分类里的奇葩吐了 耗时半天做出来</h5><h5 id="耗时-1ms-空间占用-36-4MB"><a href="#耗时-1ms-空间占用-36-4MB" class="headerlink" title="耗时 1ms 空间占用 36.4MB"></a>耗时 1ms 空间占用 36.4MB</h5><h3 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h3>]]></content>
+      <categories>
+        <category>java</category>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>leetcode</category>
+        <category>入门级算法</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/09/10/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -145,8 +186,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>字符串</tag>
         <tag>java</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
