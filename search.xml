@@ -51,6 +51,33 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>add-binary</title>
+    <url>/2020/09/24/add-binary/</url>
+    <content><![CDATA[<h2 id="二进制求和"><a href="#二进制求和" class="headerlink" title="二进制求和"></a>二进制求和</h2><h5 id="给你两个二进制字符串，返回它们的和（用二进制表示）。输入为-非空-字符串且只包含数字-1-和-0。"><a href="#给你两个二进制字符串，返回它们的和（用二进制表示）。输入为-非空-字符串且只包含数字-1-和-0。" class="headerlink" title="给你两个二进制字符串，返回它们的和（用二进制表示）。输入为 非空 字符串且只包含数字 1 和 0。"></a>给你两个二进制字符串，返回它们的和（用二进制表示）。输入为 非空 字符串且只包含数字 1 和 0。</h5><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p>输入: a = “11”, b = “1”<br>输出: “100”</p>
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><p>输入: a = “1010”, b = “1011”<br>输出: “10101”</p>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>每个字符串仅由字符 ‘0’ 或 ‘1’ 组成。<br>1 &lt;= a.length, b.length &lt;= 10^4<br>字符串如果不是 “0” ，就都不含前导零。</p>
+<h4 id="我的代码-JAVA"><a href="#我的代码-JAVA" class="headerlink" title="我的代码-JAVA"></a>我的代码-JAVA</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String addBinary(String a, String b) &#123;</span><br><span class="line"> int aIndex=a.length()-1;</span><br><span class="line">        int bIndex=b.length()-1;</span><br><span class="line">        boolean flag=<span class="literal">false</span>;</span><br><span class="line">        Stack&lt;Character&gt; stack=new Stack&lt;&gt;();</span><br><span class="line">        StringBuilder sb=new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(aIndex&gt;=0 &amp;&amp; bIndex&gt;=0)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a.charAt(aIndex)==<span class="string">&#x27;1&#x27;</span> &amp;&amp; b.charAt(bIndex)==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                        stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        stack.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    flag=<span class="literal">true</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(a.charAt(aIndex)==<span class="string">&#x27;1&#x27;</span> || b.charAt(bIndex)==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                            stack.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                            flag=<span class="literal">false</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">if</span>(a.charAt(aIndex)==<span class="string">&#x27;1&#x27;</span> || b.charAt(bIndex)==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                            stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            stack.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(aIndex&lt;0 &amp;&amp; bIndex &lt; 0)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                    flag=<span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(stack .size()!=0)&#123;</span><br><span class="line">                    sb.append(stack.pop());</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(aIndex &lt;0)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag &amp;&amp; b.charAt(bIndex)==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                    flag=<span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    stack.push(b.charAt(bIndex));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(bIndex&lt;0)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag &amp;&amp; a.charAt(aIndex)==<span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">                    flag=<span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    stack.push(a.charAt(aIndex));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            aIndex--;</span><br><span class="line">            bIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时4ms-空间占用-40-3MB"><a href="#耗时4ms-空间占用-40-3MB" class="headerlink" title="耗时4ms 空间占用 40.3MB"></a>耗时4ms 空间占用 40.3MB</h4><h3 id="题解代码–java"><a href="#题解代码–java" class="headerlink" title="题解代码–java"></a>题解代码–java</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String addBinary(String a, String b) &#123;</span><br><span class="line">        StringBuffer ans = new StringBuffer();</span><br><span class="line"></span><br><span class="line">        int n = Math.max(a.length(), b.length()), carry = 0;</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">            carry += i &lt; a.length() ? (a.charAt(a.length() - 1 - i) - <span class="string">&#x27;0&#x27;</span>) : 0;</span><br><span class="line">            carry += i &lt; b.length() ? (b.charAt(b.length() - 1 - i) - <span class="string">&#x27;0&#x27;</span>) : 0;</span><br><span class="line">            ans.append((char) (carry % 2 + <span class="string">&#x27;0&#x27;</span>));</span><br><span class="line">            carry /= 2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (carry &gt; 0) &#123;</span><br><span class="line">            ans.append(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ans.reverse();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> ans.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3ms-37-7MB"><a href="#3ms-37-7MB" class="headerlink" title="3ms  37.7MB"></a>3ms  37.7MB</h3><h4 id="都差不多搞得跟真的一样。"><a href="#都差不多搞得跟真的一样。" class="headerlink" title="都差不多搞得跟真的一样。"></a>都差不多搞得跟真的一样。</h4><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>字符串</category>
+        <category>数学</category>
+        <category>java</category>
+        <category>leetcode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>数学</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>algorithm</title>
     <url>/2020/09/11/algorithm/</url>
     <content><![CDATA[<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
@@ -140,9 +167,9 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetcode</tag>
-        <tag>java</tag>
         <tag>字符串</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -185,9 +212,9 @@
         <category>困难</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
-        <tag>java</tag>
         <tag>字符串</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -209,9 +236,9 @@
       <tags>
         <tag>简单</tag>
         <tag>算法</tag>
-        <tag>leetcode</tag>
-        <tag>java</tag>
         <tag>字符串</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -237,8 +264,8 @@
         <category>字符串</category>
       </categories>
       <tags>
-        <tag>入门级算法</tag>
         <tag>字符串</tag>
+        <tag>入门级算法</tag>
       </tags>
   </entry>
   <entry>
@@ -333,8 +360,8 @@
       <tags>
         <tag>简单</tag>
         <tag>算法</tag>
-        <tag>leetcode</tag>
         <tag>java</tag>
+        <tag>leetcode</tag>
         <tag>数组</tag>
       </tags>
   </entry>
@@ -363,8 +390,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetcode</tag>
         <tag>java</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -388,8 +415,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>leetcode</tag>
         <tag>java</tag>
+        <tag>leetcode</tag>
         <tag>array</tag>
       </tags>
   </entry>
@@ -473,8 +500,8 @@
       <tags>
         <tag>简单</tag>
         <tag>算法</tag>
-        <tag>leetcode</tag>
         <tag>java</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -521,8 +548,8 @@
         <category>栈</category>
       </categories>
       <tags>
-        <tag>入门级算法</tag>
         <tag>java</tag>
+        <tag>入门级算法</tag>
         <tag>栈</tag>
       </tags>
   </entry>
