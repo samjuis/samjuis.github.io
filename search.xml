@@ -191,6 +191,30 @@
       </tags>
   </entry>
   <entry>
+    <title>length-of-last-word</title>
+    <url>/2020/09/23/length-of-last-word/</url>
+    <content><![CDATA[<h2 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a>最后一个单词的长度</h2><h5 id="给定一个仅包含大小写字母和空格-‘-‘-的字符串-s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。如果不存在最后一个单词，请返回-0-。"><a href="#给定一个仅包含大小写字母和空格-‘-‘-的字符串-s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。如果不存在最后一个单词，请返回-0-。" class="headerlink" title="给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。如果不存在最后一个单词，请返回 0 。"></a>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。如果不存在最后一个单词，请返回 0 。</h5><h5 id="说明：一个单词是指仅由字母组成、不包含任何空格字符的-最大子字符串。"><a href="#说明：一个单词是指仅由字母组成、不包含任何空格字符的-最大子字符串。" class="headerlink" title="说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。"></a>说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。</h5><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p>输入: “Hello World”<br>输出: 5</p>
+<h5 id="我的代码-java"><a href="#我的代码-java" class="headerlink" title="我的代码-java"></a>我的代码-java</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int lengthOfLastWord(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">&quot;&quot;</span>) || null == s)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">       int r=s.length()-1;</span><br><span class="line">       int l;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span>(r&gt;=0 &amp;&amp; s.charAt(r)==<span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">           r--;</span><br><span class="line">       &#125;</span><br><span class="line">       l=r;</span><br><span class="line">       <span class="keyword">while</span>(l&gt;=0 &amp;&amp; s.charAt(l) != <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">           l--;</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">return</span> r-l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="说明：从后往前找找到不是空格后，从当前空格往前找非空格的字符数-两个值相差就是位数"><a href="#说明：从后往前找找到不是空格后，从当前空格往前找非空格的字符数-两个值相差就是位数" class="headerlink" title="说明：从后往前找找到不是空格后，从当前空格往前找非空格的字符数 两个值相差就是位数"></a>说明：从后往前找找到不是空格后，从当前空格往前找非空格的字符数 两个值相差就是位数</h5><h4 id="耗时-0ms-空间占用-36-6MB"><a href="#耗时-0ms-空间占用-36-6MB" class="headerlink" title="耗时 0ms 空间占用 36.6MB"></a>耗时 0ms 空间占用 36.6MB</h4><h5 id="简单粗暴方法-java"><a href="#简单粗暴方法-java" class="headerlink" title="简单粗暴方法-java"></a>简单粗暴方法-java</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int lengthOfLastWord(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">&quot;&quot;</span>) || null == s || s.split(<span class="string">&quot; &quot;</span>).length==0)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="built_in">return</span> s.split(<span class="string">&quot; &quot;</span>)[s.split(<span class="string">&quot; &quot;</span>).length-1].length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时-2ms-空间占用-38-5MB"><a href="#耗时-2ms-空间占用-38-5MB" class="headerlink" title="耗时 2ms 空间占用 38.5MB"></a>耗时 2ms 空间占用 38.5MB</h4><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>字符串</category>
+        <category>算法</category>
+        <category>java</category>
+        <category>leetcode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>longest-common-prefix</title>
     <url>/2020/09/11/longest-common-prefix/</url>
     <content><![CDATA[<h2 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
@@ -287,6 +311,31 @@
       <tags>
         <tag>入门级算法</tag>
         <tag>回文数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>plus-one</title>
+    <url>/2020/09/23/plus-one/</url>
+    <content><![CDATA[<h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><h5 id="给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。"><a href="#给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。" class="headerlink" title="给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。"></a>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</h5><h5 id="最高位数字存放在数组的首位，-数组中每个元素只存储单个数字。"><a href="#最高位数字存放在数组的首位，-数组中每个元素只存储单个数字。" class="headerlink" title="最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。"></a>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</h5><h5 id="你可以假设除了整数-0-之外，这个整数不会以零开头。"><a href="#你可以假设除了整数-0-之外，这个整数不会以零开头。" class="headerlink" title="你可以假设除了整数 0 之外，这个整数不会以零开头。"></a>你可以假设除了整数 0 之外，这个整数不会以零开头。</h5><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p>
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><p>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p>
+<h4 id="我的代码-java"><a href="#我的代码-java" class="headerlink" title="我的代码-java"></a>我的代码-java</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] plusOne(int[] digits) &#123;</span><br><span class="line">         <span class="keyword">if</span> (digits.length == 0) &#123;</span><br><span class="line">            <span class="built_in">return</span> new int[1];</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        callBack(stack, digits, digits.length - 1, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        int[] nums = new int[stack.size()];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            nums[i] = stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">    public void callBack(Stack&lt;Integer&gt; stack,int[] digits,int index,boolean flag)&#123;</span><br><span class="line">         <span class="keyword">if</span> (index &lt; 0) &#123;</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                stack.push(1);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (index == digits.length - 1 &amp;&amp; digits[index] == 9) &#123;</span><br><span class="line">            stack.push(0);</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (digits[index] == 9 &amp;&amp; flag) &#123;</span><br><span class="line">            stack.push(0);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">            stack.push(digits[index] + 1);</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(index == digits.length - 1)&#123;</span><br><span class="line">            stack.push(digits[index]+1);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            stack.push(digits[index]);</span><br><span class="line">        &#125;</span><br><span class="line">        callBack(stack, digits, index - 1, flag);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时-1ms-空间占用-37-3MB"><a href="#耗时-1ms-空间占用-37-3MB" class="headerlink" title="耗时 1ms 空间占用 37.3MB"></a>耗时 1ms 空间占用 37.3MB</h4><h4 id="大佬的代码–java"><a href="#大佬的代码–java" class="headerlink" title="大佬的代码–java"></a>大佬的代码–java</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] plusOne(int[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int i = digits.length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            digits[i]++;</span><br><span class="line">            digits[i] = digits[i] % 10;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != 0) <span class="built_in">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = new int[digits.length + 1];</span><br><span class="line">        digits[0] = 1;</span><br><span class="line">        <span class="built_in">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时0ms-空间占用-37-3MB"><a href="#耗时0ms-空间占用-37-3MB" class="headerlink" title="耗时0ms 空间占用 37.3MB"></a>耗时0ms 空间占用 37.3MB</h4><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>数组</category>
+        <category>算法</category>
+        <category>java</category>
+        <category>leetcode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
