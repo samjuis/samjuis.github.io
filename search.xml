@@ -526,6 +526,35 @@
       </tags>
   </entry>
   <entry>
+    <title>sqrtx</title>
+    <url>/2020/09/25/sqrtx/</url>
+    <content><![CDATA[<h2 id="x-的平方根"><a href="#x-的平方根" class="headerlink" title="x 的平方根"></a>x 的平方根</h2><h4 id="实现-int-sqrt-int-x-函数。"><a href="#实现-int-sqrt-int-x-函数。" class="headerlink" title="实现 int sqrt(int x) 函数。"></a>实现 int sqrt(int x) 函数。</h4><h4 id="计算并返回-x-的平方根，其中-x-是非负整数。"><a href="#计算并返回-x-的平方根，其中-x-是非负整数。" class="headerlink" title="计算并返回 x 的平方根，其中 x 是非负整数。"></a>计算并返回 x 的平方根，其中 x 是非负整数。</h4><h4 id="由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。"><a href="#由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。" class="headerlink" title="由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。"></a>由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</h4><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p>输入: 4<br>输出: 2</p>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>输入: 8<br>输出: 2<br>说明: 8 的平方根是 2.82842…,<br>     由于返回类型是整数，小数部分将被舍去。</p>
+<h4 id="我的代码-java-二分查找"><a href="#我的代码-java-二分查找" class="headerlink" title="我的代码-java-二分查找"></a>我的代码-java-二分查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int mySqrt(int x) &#123;</span><br><span class="line">        int left=1;</span><br><span class="line">            int right=x/2&gt;0?x/2:1;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>((long)left*left&gt;x)&#123;</span><br><span class="line">                    <span class="built_in">return</span> left-1;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>((long)right*right&gt;x)&#123;</span><br><span class="line">                    right=right/2;</span><br><span class="line">                &#125;</span><br><span class="line">		//可删除下面的<span class="keyword">if</span> 没啥用 还增加了十多毫秒</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(left&gt;right)&#123;</span><br><span class="line">                    right++;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结果-加上最后的if-耗时-50ms，空间占用-36-2MB。不加最后if，耗时37ms，空间占用-36-1MB"><a href="#结果-加上最后的if-耗时-50ms，空间占用-36-2MB。不加最后if，耗时37ms，空间占用-36-1MB" class="headerlink" title="结果 加上最后的if 耗时 50ms，空间占用 36.2MB。不加最后if，耗时37ms，空间占用 36.1MB"></a>结果 加上最后的if 耗时 50ms，空间占用 36.2MB。不加最后if，耗时37ms，空间占用 36.1MB</h4><h4 id="官方代码-java-二分查找"><a href="#官方代码-java-二分查找" class="headerlink" title="官方代码-java-二分查找"></a>官方代码-java-二分查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int mySqrt(int x) &#123;</span><br><span class="line">	int l = 0, r = x, ans = -1;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            int mid = l + (r - l) / 2;</span><br><span class="line">            <span class="keyword">if</span> ((long) mid * mid &lt;= x) &#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                l = mid + 1;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r = mid - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> ans;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结果-耗时-2ms-空间占用36-MB"><a href="#结果-耗时-2ms-空间占用36-MB" class="headerlink" title="结果 耗时 2ms 空间占用36.MB"></a>结果 耗时 2ms 空间占用36.MB</h4><h3 id="思路-："><a href="#思路-：" class="headerlink" title="思路 ："></a>思路 ：</h3><p>由于 xx 平方根的整数部分 \textit{ans}ans 是满足 k^2 \leq xk<br>2<br> ≤x 的最大 kk 值，因此我们可以对 kk 进行二分查找，从而得到答案。</p>
+<p>二分查找的下界为 00，上界可以粗略地设定为 xx。在二分查找的每一步中，我们只需要比较中间元素 \textit{mid}mid 的平方与 xx 的大小关系，并通过比较的结果调整上下界的范围。由于我们所有的运算都是整数运算，不会存在误差，因此在得到最终的答案 \textit{ans}ans 后，也就不需要再去尝试 \textit{ans} + 1ans+1 了。</p>
+<h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>java</category>
+        <category>算法</category>
+        <category>leetcode</category>
+        <category>二分查找</category>
+        <category>数学</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>数学</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>valid-parentheses</title>
     <url>/2020/09/11/valid-parentheses/</url>
     <content><![CDATA[<h2 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a>有效的括号</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
