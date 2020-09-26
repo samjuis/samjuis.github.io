@@ -107,6 +107,35 @@
       </tags>
   </entry>
   <entry>
+    <title>climbing-stairs</title>
+    <url>/2020/09/26/climbing-stairs/</url>
+    <content><![CDATA[<h2 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a>爬楼梯</h2><h3 id="假设你正在爬楼梯。需要n阶你才能到达楼顶。-每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？"><a href="#假设你正在爬楼梯。需要n阶你才能到达楼顶。-每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？" class="headerlink" title="假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？"></a>假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</h3><h4 id="注意：给定n是一个正整数。"><a href="#注意：给定n是一个正整数。" class="headerlink" title="注意：给定n是一个正整数。"></a>注意：给定n是一个正整数。</h4><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p> 输入：2<br> 输出：2<br> 解释：有两种方法可以爬到楼顶<br> 1.1阶+1阶<br> 2.2阶</p>
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><p> 输入：3<br> 输出：3<br> 解释：有三种方法可以爬到楼顶。</p>
+<ol>
+<li>1阶+1阶+1阶</li>
+<li>1阶+2阶</li>
+<li>2阶+1阶</li>
+</ol>
+<h3 id="我的代码-java-递归-动态规划"><a href="#我的代码-java-递归-动态规划" class="headerlink" title="我的代码-java-递归+动态规划"></a>我的代码-java-递归+动态规划</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        <span class="built_in">return</span> callBack(n,1,1,1,1);</span><br><span class="line">    &#125;</span><br><span class="line">    public int callBack(int n,int t,int x1,int x2,int sum)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==0 || n==1)&#123;</span><br><span class="line">            <span class="built_in">return</span> 1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(t==n)&#123;</span><br><span class="line">            <span class="built_in">return</span> sum;</span><br><span class="line">        &#125;</span><br><span class="line">        sum=x1+x2;</span><br><span class="line">        <span class="built_in">return</span> callBack(n,t+1,x2,sum,sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结。典型的脱了裤子放屁。你说是算斐波拉契还好，换个说法就你妈的不会了。吐了"><a href="#总结。典型的脱了裤子放屁。你说是算斐波拉契还好，换个说法就你妈的不会了。吐了" class="headerlink" title="总结。典型的脱了裤子放屁。你说是算斐波拉契还好，换个说法就你妈的不会了。吐了"></a>总结。典型的脱了裤子放屁。你说是算斐波拉契还好，换个说法就你妈的不会了。吐了</h3><h3 id="耗时0ms-空间占用-35-6MB"><a href="#耗时0ms-空间占用-35-6MB" class="headerlink" title="耗时0ms 空间占用 35.6MB"></a>耗时0ms 空间占用 35.6MB</h3><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>动态规划</category>
+        <category>算法</category>
+        <category>leetcode</category>
+        <category>java</category>
+        <category>简单</category>
+        <category>斐波拉契</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+        <tag>动态规划</tag>
+        <tag>斐波拉契</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>combine-two-tables</title>
     <url>/2020/09/11/combine-two-tables/</url>
     <content><![CDATA[<h2 id="组合两个表"><a href="#组合两个表" class="headerlink" title="组合两个表"></a>组合两个表</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h5 id="表1-Person"><a href="#表1-Person" class="headerlink" title="表1: Person"></a>表1: Person</h5><p>+————-+———+<br>| 列名         | 类型     |<br>+————-+———+<br>| PersonId    | int     |<br>| FirstName   | varchar |<br>| LastName    | varchar |<br>+————-+———+<br>PersonId 是上表主键</p>
@@ -288,9 +317,36 @@
       <tags>
         <tag>简单</tag>
         <tag>java</tag>
-        <tag>分治算法</tag>
         <tag>动态规划</tag>
+        <tag>分治算法</tag>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>merge-sorted-array</title>
+    <url>/2020/09/26/merge-sorted-array/</url>
+    <content><![CDATA[<h2 id="合并两个有序数组"><a href="#合并两个有序数组" class="headerlink" title="合并两个有序数组"></a>合并两个有序数组</h2><h4 id="给你两个有序整数数组-nums1-和-nums2，请你将-nums2-合并到-nums1-中，使-nums1-成为一个有序数组。"><a href="#给你两个有序整数数组-nums1-和-nums2，请你将-nums2-合并到-nums1-中，使-nums1-成为一个有序数组。" class="headerlink" title="给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。"></a>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</h4><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p>输入:<br>nums1 = [1,2,3,0,0,0], m = 3<br>nums2 = [2,5,6],       n = 3</p>
+<p>输出: [1,2,2,3,5,6]</p>
+<h4 id="我的代码——java-流氓式写法"><a href="#我的代码——java-流氓式写法" class="headerlink" title="我的代码——java-流氓式写法"></a>我的代码——java-流氓式写法</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;</span><br><span class="line">        m+=n;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; n;i++)&#123;</span><br><span class="line">            nums1[m-i-1]=nums2[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="结果-耗时-1ms-空间占用-39-3MB"><a href="#结果-耗时-1ms-空间占用-39-3MB" class="headerlink" title="结果 耗时 1ms 空间占用 39.3MB"></a>结果 耗时 1ms 空间占用 39.3MB</h4><h4 id="我的代码–Java"><a href="#我的代码–Java" class="headerlink" title="我的代码–Java"></a>我的代码–Java</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void merge(int[] nums1, int m, int[] nums2, int n) &#123;</span><br><span class="line">        m--;n--;</span><br><span class="line">        int i=m+n+1;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=0)&#123;</span><br><span class="line">                <span class="keyword">if</span>(n&lt;0)&#123;</span><br><span class="line">                    nums1[i]=nums1[m--];</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>( m &lt; 0)&#123;</span><br><span class="line">                    nums1[i]=nums2[n--];</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(m&lt;0 &amp;&amp; n&lt;0) &#123;</span><br><span class="line">                    <span class="built_in">break</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    nums1[i] = nums1[m] &lt; nums2[n] ? nums2[n--] : nums1[m--];</span><br><span class="line">                &#125;</span><br><span class="line">                i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结果-耗时0ms-空间占用-39-1MB"><a href="#结果-耗时0ms-空间占用-39-1MB" class="headerlink" title="结果 耗时0ms 空间占用 39.1MB"></a>结果 耗时0ms 空间占用 39.1MB</h4><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>java</category>
+        <category>leetcode</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>数组</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -392,6 +448,31 @@
         <tag>算法</tag>
         <tag>java</tag>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>remove-duplicates-from-sorted-list</title>
+    <url>/2020/09/26/remove-duplicates-from-sorted-list/</url>
+    <content><![CDATA[<h2 id="删除排序链表中的重复元素"><a href="#删除排序链表中的重复元素" class="headerlink" title="删除排序链表中的重复元素"></a>删除排序链表中的重复元素</h2><h5 id="给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。"><a href="#给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。" class="headerlink" title="给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。"></a>给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。</h5><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p>输入: 1-&gt;1-&gt;2<br>输出: 1-&gt;2</p>
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><p>输入: 1-&gt;1-&gt;2-&gt;3-&gt;3<br>输出: 1-&gt;2-&gt;3</p>
+<h4 id="我的代码-java"><a href="#我的代码-java" class="headerlink" title="我的代码-java"></a>我的代码-java</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        ListNode head=null;</span><br><span class="line">        ListNode listNode=new ListNode(1);</span><br><span class="line">        head=listNode;</span><br><span class="line">        <span class="keyword">for</span>(int i=1;i&lt;5;i++)&#123;</span><br><span class="line">            //新增节点</span><br><span class="line">            ListNode listNode1=new ListNode(1);</span><br><span class="line">            //当前节点的下一节点为 新增节点</span><br><span class="line">            listNode.next=listNode1;</span><br><span class="line">            //将当前节点切换至下一节点</span><br><span class="line">            listNode=listNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        //正式操作</span><br><span class="line">        head=deleteDuplicates(head);</span><br><span class="line">        <span class="keyword">while</span>(head != null)&#123;</span><br><span class="line">            System.out.println(head.val);</span><br><span class="line">            head=head.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">        <span class="keyword">if</span>(head ==null)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode newHead=new ListNode(head.val);</span><br><span class="line">        ListNode l1=newHead;</span><br><span class="line">        int temp=l1.val;</span><br><span class="line">        <span class="keyword">while</span> (head != null)&#123;</span><br><span class="line">            ListNode l2=head;</span><br><span class="line">            <span class="keyword">if</span>(temp!=l2.val) &#123;</span><br><span class="line">                newHead.next = new ListNode(l2.val);</span><br><span class="line">                newHead=newHead.next;</span><br><span class="line">                temp=l2.val;</span><br><span class="line">            &#125;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class ListNode &#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(int x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时1ms-空间占用38-7MB"><a href="#耗时1ms-空间占用38-7MB" class="headerlink" title="耗时1ms 空间占用38.7MB"></a>耗时1ms 空间占用38.7MB</h4><h4 id="官方代码-java"><a href="#官方代码-java" class="headerlink" title="官方代码-java"></a>官方代码-java</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">    ListNode current = head;</span><br><span class="line">    <span class="keyword">while</span> (current != null &amp;&amp; current.next != null) &#123;</span><br><span class="line">        <span class="keyword">if</span> (current.next.val == current.val) &#123;</span><br><span class="line">            current.next = current.next.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            current = current.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="java没有指针，哪来的野指针。GC回收机制"><a href="#java没有指针，哪来的野指针。GC回收机制" class="headerlink" title="java没有指针，哪来的野指针。GC回收机制"></a>java没有指针，哪来的野指针。GC回收机制</h3><h4 id="完"><a href="#完" class="headerlink" title="完"></a>完</h4>]]></content>
+      <categories>
+        <category>链表</category>
+        <category>java</category>
+        <category>算法</category>
+        <category>简单</category>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
