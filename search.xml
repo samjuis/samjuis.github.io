@@ -107,6 +107,37 @@
       </tags>
   </entry>
   <entry>
+    <title>binary-tree-postorder-traversal</title>
+    <url>/2020/09/29/binary-tree-postorder-traversal/</url>
+    <content><![CDATA[<h2 id="二叉树的后序遍历"><a href="#二叉树的后序遍历" class="headerlink" title="二叉树的后序遍历"></a>二叉树的后序遍历</h2><h5 id="给定一个二叉树，返回它的-后序-遍历。"><a href="#给定一个二叉树，返回它的-后序-遍历。" class="headerlink" title="给定一个二叉树，返回它的 后序 遍历。"></a>给定一个二叉树，返回它的 后序 遍历。</h5><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p> 输入: [1,null,2,3]<br>   1<br>    <br>     2<br>    /<br>   3 </p>
+<p>输出: [3,2,1]</p>
+<p>进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p>
+<h4 id="我的代码-java-递归"><a href="#我的代码-java-递归" class="headerlink" title="我的代码-java-递归"></a>我的代码-java-递归</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">            list.addAll(postorderTraversal(root.left));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">            list.addAll(postorderTraversal(root.right));</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="耗时-0-ms-空间占用37-6MB"><a href="#耗时-0-ms-空间占用37-6MB" class="headerlink" title="耗时 0 ms 空间占用37.6MB"></a>耗时 0 ms 空间占用37.6MB</h4><h4 id="CSdn-java-迭代"><a href="#CSdn-java-迭代" class="headerlink" title="CSdn-java-迭代"></a>CSdn-java-迭代</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">houxuFeiDigui</span><span class="params">(TreeNode treeNode)</span> </span>&#123;</span><br><span class="line">       Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line">       <span class="keyword">while</span> (treeNode != <span class="keyword">null</span> || !stack.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">while</span> (treeNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">               stack.push(treeNode);</span><br><span class="line">               treeNode = treeNode.left;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">boolean</span> tag = <span class="keyword">true</span>;</span><br><span class="line">           TreeNode preNode = <span class="keyword">null</span>;  <span class="comment">// 前驱节点</span></span><br><span class="line">           <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; tag == <span class="keyword">true</span>) &#123;</span><br><span class="line">               treeNode = stack.peek();</span><br><span class="line">               <span class="keyword">if</span> (treeNode.right == preNode) &#123; <span class="comment">// 之前访问的为空节点或是栈顶节点的右子节点</span></span><br><span class="line">                   treeNode = stack.pop();</span><br><span class="line">                   houxuNumList.add(treeNode.val);</span><br><span class="line">                   <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">                       <span class="keyword">return</span>;</span><br><span class="line">                   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                       preNode = treeNode;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   treeNode = treeNode.right;</span><br><span class="line">                   tag = <span class="keyword">false</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>有空再看。</p>
+<h3 id="说明：-先序和中序就只有两个while-后序与前两个结构不相同。"><a href="#说明：-先序和中序就只有两个while-后序与前两个结构不相同。" class="headerlink" title="说明： 先序和中序就只有两个while 后序与前两个结构不相同。"></a>说明： 先序和中序就只有两个while 后序与前两个结构不相同。</h3><h4 id="完"><a href="#完" class="headerlink" title="完"></a>完</h4>]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>二叉树</category>
+        <category>算法</category>
+        <category>java</category>
+        <category>leetcode</category>
+        <category>递归</category>
+        <category>中等</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>二叉树</tag>
+        <tag>递归</tag>
+        <tag>中等</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>climbing-stairs</title>
     <url>/2020/09/26/climbing-stairs/</url>
     <content><![CDATA[<h2 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a>爬楼梯</h2><h3 id="假设你正在爬楼梯。需要n阶你才能到达楼顶。-每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？"><a href="#假设你正在爬楼梯。需要n阶你才能到达楼顶。-每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？" class="headerlink" title="假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？"></a>假设你正在爬楼梯。需要n阶你才能到达楼顶。 每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？</h3><h4 id="注意：给定n是一个正整数。"><a href="#注意：给定n是一个正整数。" class="headerlink" title="注意：给定n是一个正整数。"></a>注意：给定n是一个正整数。</h4><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p> 输入：2<br> 输出：2<br> 解释：有两种方法可以爬到楼顶<br> 1.1阶+1阶<br> 2.2阶</p>
