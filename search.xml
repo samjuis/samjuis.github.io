@@ -233,6 +233,30 @@
       </tags>
   </entry>
   <entry>
+    <title>employees-earning-more-than-their-managers</title>
+    <url>/2020/09/29/employees-earning-more-than-their-managers/</url>
+    <content><![CDATA[<h2 id="超过经理收入的员工"><a href="#超过经理收入的员工" class="headerlink" title="超过经理收入的员工"></a>超过经理收入的员工</h2><h5 id="Employee-表包含所有员工，他们的经理也属于员工。每个员工都有一个-Id，此外还有一列对应员工的经理的-Id。"><a href="#Employee-表包含所有员工，他们的经理也属于员工。每个员工都有一个-Id，此外还有一列对应员工的经理的-Id。" class="headerlink" title="Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。"></a>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</h5><p>+—-+——-+——–+———–+<br>| Id | Name  | Salary | ManagerId |<br>+—-+——-+——–+———–+<br>| 1  | Joe   | 70000  | 3         |<br>| 2  | Henry | 80000  | 4         |<br>| 3  | Sam   | 60000  | NULL      |<br>| 4  | Max   | 90000  | NULL      |<br>+—-+——-+——–+———–+</p>
+<h5 id="给定-Employee-表，编写一个-SQL-查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe-是唯一一个收入超过他的经理的员工。"><a href="#给定-Employee-表，编写一个-SQL-查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe-是唯一一个收入超过他的经理的员工。" class="headerlink" title="给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。"></a>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</h5><p>+———-+<br>| Employee |<br>+———-+<br>| Joe      |<br>+———-+</p>
+<h4 id="我的sql"><a href="#我的sql" class="headerlink" title="我的sql"></a>我的sql</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">Name</span> <span class="keyword">as</span> Employee <span class="keyword">from</span> Employee a <span class="keyword">where</span> Salary &gt; (<span class="keyword">select</span> Salary <span class="keyword">from</span> Employee b <span class="keyword">where</span> a.ManagerId=b.Id)</span><br></pre></td></tr></table></figure>
+
+<h4 id="官方sql"><a href="#官方sql" class="headerlink" title="官方sql"></a>官方sql</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    a.Name <span class="keyword">AS</span> <span class="string">&#x27;Employee&#x27;</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee <span class="keyword">AS</span> a,</span><br><span class="line">    Employee <span class="keyword">AS</span> b</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    a.ManagerId = b.Id</span><br><span class="line">        <span class="keyword">AND</span> a.Salary &gt; b.Salary</span><br><span class="line"></span><br><span class="line"><span class="keyword">join</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">     a.NAME <span class="keyword">AS</span> Employee</span><br><span class="line"><span class="keyword">FROM</span> Employee <span class="keyword">AS</span> a <span class="keyword">JOIN</span> Employee <span class="keyword">AS</span> b</span><br><span class="line">     <span class="keyword">ON</span> a.ManagerId = b.Id</span><br><span class="line">     <span class="keyword">AND</span> a.Salary &gt; b.Salary</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="表含父级属性的。-遇到过。采用的聚合方式处理。-这里给出了简单的处理方式。建议参考官方代码"><a href="#表含父级属性的。-遇到过。采用的聚合方式处理。-这里给出了简单的处理方式。建议参考官方代码" class="headerlink" title="表含父级属性的。 遇到过。采用的聚合方式处理。 这里给出了简单的处理方式。建议参考官方代码"></a>表含父级属性的。 遇到过。采用的聚合方式处理。 这里给出了简单的处理方式。建议参考官方代码</h4><h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>]]></content>
+      <categories>
+        <category>mysql</category>
+        <category>算法</category>
+        <category>leetcode</category>
+        <category>简单</category>
+      </categories>
+      <tags>
+        <tag>简单</tag>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/09/10/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
